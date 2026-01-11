@@ -1,0 +1,41 @@
+Query,Label
+' OR 1=1--,1
+' OR '1'='1,1
+admin'--,1
+' UNION SELECT NULL--,1
+"' UNION SELECT username, password FROM users--",1
+1' AND 1=1--,1
+' OR 'a'='a,1
+'; DROP TABLE users;--,1
+' AND SLEEP(5)--,1
+1' ORDER BY 1--,1
+' OR 1=1#,1
+admin' --,1
+' UNION ALL SELECT NULL--,1
+"' AND 1=CONVERT(int,@@version)--",1
+1; EXEC xp_cmdshell('dir')--,1
+' OR ''=',1
+'-',1
+' AND '1'='1,1
+') OR ('1'='1,1
+' OR 1=1 /*,1
+john.doe@email.com,0
+password123,0
+Search products,0
+Hello World,0
+user_name_123,0
+My name is John,0
+Order #12345,0
+contact@company.com,0
+Welcome to website,0
+Product description,0
+username,0
+admin,0
+test123,0
+hello,0
+support@example.com,0
+New York,0
+12345,0
+John Smith,0
+Category: Electronics,0
+Price: $99.99,0

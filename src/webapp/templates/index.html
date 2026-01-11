@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% if not products %}
+<div class="hero">
+    <h1>Reduceri de iarnă!</h1>
+    <p>Prinde cele mai bune oferte la electronice și electrocasnice.</p>
+</div>
+{% endif %}
+
+{% if request.args.get('q') %}
+<h2>Rezultate căutare pentru: "{{ request.args.get('q') }}"</h2>
+
+{% if query_executed %}
+<div class="alert alert-danger" style="text-align: left; font-family: monospace; overflow-x: auto;">
+    <strong>[DEBUG - VULNERABILITY EXPOSED]</strong> SQL Query Executed:<br>
+    {{ query_executed }}
+</div>
+{% endif %}
+{% else %}
+<h2>Produse Recomandate</h2>
+{% endif %}
+
+<div class="products-grid">
+    {% for product in products %}
+    <div class="product-card">
+        <div class="product-image">
+            <i class="fas fa-image fa-3x"></i>
+        </div>
+        <h3 class="product-title">{{ product.name }}</h3>
+        <div class="product-price">
+            {{ "%.2f"|format(product.price) }} <span>Lei</span>
+        </div>
+        <div
+            style="font-size: 12px; color: {% if product.stock > 10 %}#2e7d32{% else %}#ef2126{% endif %}; margin-bottom: 10px;">
+            {% if product.stock > 10 %}
+            În stoc
+            {% else %}
+            Stoc limitat ({{ product.stock }})
+            {% endif %}
+        </div>
+        <button class="add-to-cart">Adaugă în Coș</button>
+    </div>
+    {% else %}
+    <p>Nu am găsit produse.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

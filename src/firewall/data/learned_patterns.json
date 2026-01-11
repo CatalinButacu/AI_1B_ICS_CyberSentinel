@@ -1,0 +1,1 @@
+[{"pattern": "' OR 1=1--", "frequency": 1.0, "extraction_method": "substring_analysis", "sample_payloads": ["' OR 1=1--"]}]

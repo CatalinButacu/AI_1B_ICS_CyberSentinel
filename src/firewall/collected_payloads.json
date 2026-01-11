@@ -1,0 +1,146 @@
+[
+  {
+    "payload": "' UNION SEL/**/ECT NULL,NULL--",
+    "confidence": 0.81,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:03:42.140466"
+  },
+  {
+    "payload": "' UN/**/ION SEL/**/ECT NULL,NULL--",
+    "confidence": 0.8,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:03:46.319928"
+  },
+  {
+    "payload": "' UN/**/ION SEL/**/ECT NULL,NULL--",
+    "confidence": 0.8,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:03:50.495600"
+  },
+  {
+    "payload": "' Or 'A'='A",
+    "confidence": 0.96,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:04:11.596604"
+  },
+  {
+    "payload": "' UnIoN SeLeCt nUlL,NuLl--",
+    "confidence": 0.88,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:04:20.010329"
+  },
+  {
+    "payload": "' UnIoN SeL/**/eCt nUlL,NuLl--",
+    "confidence": 0.81,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:04:24.171283"
+  },
+  {
+    "payload": "' Un/**/IoN SeL/**/eCt nUlL,NuLl--",
+    "confidence": 0.8,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:04:28.337658"
+  },
+  {
+    "payload": "' Un/**/IoN SeL/**/eCt nUlL,NuLl--",
+    "confidence": 0.8,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:04:32.508185"
+  },
+  {
+    "payload": "' UNION SEL/**/ECT NULL--",
+    "confidence": 0.84,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:05:12.668475"
+  },
+  {
+    "payload": "' UN/**/ION SEL/**/ECT NULL--",
+    "confidence": 0.82,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:05:16.833819"
+  },
+  {
+    "payload": "' UN/**/ION SEL/**/ECT NULL--",
+    "confidence": 0.82,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:05:20.988537"
+  },
+  {
+    "payload": "1' O/**/RDER BY 1--",
+    "confidence": 0.85,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:05:50.484982"
+  },
+  {
+    "payload": "1' O/**/RDER BY 1--",
+    "confidence": 0.85,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:05:54.670115"
+  },
+  {
+    "payload": "1' oRdEr bY 1--",
+    "confidence": 0.94,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:07:24.963480"
+  },
+  {
+    "payload": "1' o/**/RdEr bY 1--",
+    "confidence": 0.85,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:07:29.139014"
+  },
+  {
+    "payload": "1' o/**/RdEr bY 1--",
+    "confidence": 0.85,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:07:33.302718"
+  },
+  {
+    "payload": "' UnIoN SeLeCt nUlL--",
+    "confidence": 0.91,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:07:48.034968"
+  },
+  {
+    "payload": "' UnIoN SeL/**/eCt nUlL--",
+    "confidence": 0.84,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:07:52.210230"
+  },
+  {
+    "payload": "' Un/**/IoN SeL/**/eCt nUlL--",
+    "confidence": 0.82,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:07:56.376872"
+  },
+  {
+    "payload": "' Un/**/IoN SeL/**/eCt nUlL--",
+    "confidence": 0.82,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:08:00.570854"
+  },
+  {
+    "payload": "' Un/**/IoN SeL/**/eCt nUlL--",
+    "confidence": 0.82,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:08:04.756775"
+  },
+  {
+    "payload": "' AnD 1=1--",
+    "confidence": 0.87,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:08:08.934102"
+  },
+  {
+    "payload": "1' O/**/RDER BY 10--",
+    "confidence": 0.82,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:08:51.113060"
+  },
+  {
+    "payload": "1' O/**/RDER BY 10--",
+    "confidence": 0.82,
+    "source": "sqli_detector",
+    "received_at": "2026-01-10T12:08:55.269344"
+  }
+]

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}eShop - Magazin Online{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="/" class="logo">e<span>SHOP</span>.ro</a>
+            
+            <div class="search-bar">
+                <form action="/search" method="GET" class="search-form">
+                    <input type="text" name="q" class="search-input" placeholder="Caută produse..." value="{{ request.args.get('q', '') }}">
+                    <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            
+            <div class="nav-links">
+                <a href="/"><i class="fas fa-home"></i> Acasă</a>
+                <a href="/login"><i class="fas fa-user"></i> Contul meu</a>
+                <a href="#"><i class="fas fa-heart"></i> Favorite</a>
+                <a href="#"><i class="fas fa-shopping-cart"></i> Coș</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer style="background: #fff; padding: 20px 0; margin-top: 50px; border-top: 1px solid #eee; text-align: center; color: #666; font-size: 13px;">
+        <div class="container">
+            <p>&copy; 2026 eShop România. Acest site este VULNERABIL intenționat pentru scopuri educaționale.</p>
+            <p>Nu introduceți date reale!</p>
+        </div>
+    </footer>
+</body>
+</html>

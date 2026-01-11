@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <h2 class="auth-title">Intră în cont</h2>
+
+        {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        {% if success %}
+        <div class="alert alert-success">
+            Autentificare reușită! Bine ai venit, {{ user.username }}.
+        </div>
+
+        {% if data %}
+        <div
+            style="background: #fff3e0; padding: 10px; border: 1px solid #ffe0b2; border-radius: 4px; margin-bottom: 20px;">
+            <strong style="color: #ef6c00;">[EXPLOIT SUCCESS]</strong> Date extrase:
+            <ul style="text-align: left; margin: 10px 0 0 20px; font-size: 13px;">
+                {% for row in data %}
+                <li>{{ row.username }} | {{ row.email }} | {{ row.role }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        {% endif %}
+
+        {% if query_executed %}
+        <div
+            style="font-size: 11px; color: #666; font-family: monospace; margin-bottom: 15px; border-top: 1px solid #eee; padding-top: 10px;">
+            SQL Query: {{ query_executed }}
+        </div>
+        {% endif %}
+
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="username">Email sau Telefon</label>
+                <input type="text" id="username" name="username" class="form-control"
+                    placeholder="Introdu adresa de email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Parola</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Introdu parola"
+                    required>
+            </div>
+
+            <button type="submit" class="btn-primary">Continuă</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 20px; font-size: 13px;">
+            <a href="#" style="color: #005eb8;">Ai uitat parola?</a>
+        </div>
+
+        <div
+            style="text-align: center; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px; font-size: 13px;">
+            Nu ai cont? <a href="#" style="color: #005eb8;">Creează cont</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

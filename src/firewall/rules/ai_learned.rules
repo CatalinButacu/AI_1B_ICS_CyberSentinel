@@ -1,0 +1,4 @@
+# AI-Generated Snort Rules
+# Last cleared: 2026-01-11T14:34:07.097184
+
+alert tcp any any -> any any (msg:"AI-Detected: ' OR 1=1--"; flow:to_server,established; content:"' OR 1=1--"; nocase; classtype:web-application-attack; sid:9055091; rev:1; metadata:created 20260111;)
