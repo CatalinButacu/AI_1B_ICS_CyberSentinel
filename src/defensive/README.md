@@ -11,13 +11,13 @@ Author: Beatrice
 ### Core Components
 
 **train.py** - Model training script that:
-- Loads SQL injection dataset (Kaggle or sample data)
-- Extracts features using TF-IDF vectorization (character n-grams)
-- Trains RandomForest classifier
-- Evaluates accuracy and saves model to pickle file
+- Loads SQL injection dataset (labeled_dataset.csv)
+- Extracts features using Keras Tokenizer and Embeddings
+- Trains CNN (Conv1D) classifier
+- Evaluates accuracy/recall and saves model to .h5 file
 
 **detector.py** - REST API that:
-- Loads trained model on startup
+- Loads trained Keras model on startup
 - Exposes /check endpoint for payload classification
 - Returns attack probability and confidence score
 - Sends detected attacks to firewall for pattern learning
@@ -25,8 +25,8 @@ Author: Beatrice
 ### Machine Learning Pipeline
 
 ```
-Input Query --> TF-IDF Vectorizer --> Feature Vector --> RandomForest --> Attack/Normal
-                (char 2-5 grams)       (5000 dims)        (100 trees)
+Input Query --> Tokenizer --> Embedding --> Conv1D --> Dense --> Attack/Normal
+                (Word/Char)   (32 dim)      (64 filters)
 ```
 
 ### Feature Extraction

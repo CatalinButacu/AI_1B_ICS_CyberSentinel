@@ -1,133 +1,106 @@
-"""
-SQL Injection Detection Model Training
-Author: Beatrice (Defensive Team)
-
-TODO: Download Kaggle dataset (30k samples) from https://www.kaggle.com/datasets/sajid576/sql-injection-dataset
-TODO: Try XGBoost (99.58% accuracy reported in research)
-TODO: Add BERT-LSTM for semantic understanding
-"""
-
+import pandas as pd
+import numpy as np
+import pickle
+import tensorflow as tf
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, Conv1D, GlobalMaxPooling1D, Dense, Dropout
+from sklearn.model_selection import train_test_split
+from sklearn.utils import class_weight
+from sklearn.metrics import recall_score, confusion_matrix
 import os
 import sys
-import pickle
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, accuracy_score
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'shared'))
-from config import RESOURCES
 
-MODELS_DIR = os.path.join(os.path.dirname(__file__), 'models')
-DATASET_PATH = os.path.join(os.path.dirname(__file__), '..', 'shared', 'datasets', 'sqli_dataset.csv')
-MODEL_PATH = os.path.join(MODELS_DIR, 'sqli_detector.pkl')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODELS_DIR = os.path.join(BASE_DIR, 'models')
+os.makedirs(MODELS_DIR, exist_ok=True)
 
+SHARED_DATASET_PATH = os.path.join(BASE_DIR, '..', 'shared', 'datasets', 'labeled_dataset.csv')
+LOCAL_DATASET_PATH = os.path.join(BASE_DIR, 'labeled_dataset.csv')
 
-def create_sample_training_data():
-    print("[WARN] Using sample dataset - download real data from Kaggle!")
-    
-    attacks = [
-        "' OR 1=1--", "' OR '1'='1", "admin'--", "' UNION SELECT NULL--",
-        "' UNION SELECT username, password FROM users--", "1' AND 1=1--",
-        "' OR 'a'='a", "'; DROP TABLE users;--", "' AND SLEEP(5)--",
-        "1' ORDER BY 1--", "' OR 1=1#", "admin' --", "' UNION ALL SELECT NULL--",
-        "' AND 1=CONVERT(int,@@version)--", "1; EXEC xp_cmdshell('dir')--",
-        "' OR ''='", "'-'", "' AND '1'='1", "') OR ('1'='1", "' OR 1=1 /*",
-    ]
-    
-    normal = [
-        "john.doe@email.com", "password123", "Search products", "Hello World",
-        "user_name_123", "My name is John", "Order #12345", "contact@company.com",
-        "Welcome to website", "Product description", "username", "admin",
-        "test123", "hello", "support@example.com", "New York", "12345",
-        "John Smith", "Category: Electronics", "Price: $99.99",
-    ]
-    
-    data = [{'Query': p, 'Label': 1} for p in attacks]
-    data += [{'Query': t, 'Label': 0} for t in normal]
-    
-    df = pd.DataFrame(data)
-    os.makedirs(os.path.dirname(DATASET_PATH), exist_ok=True)
-    df.to_csv(DATASET_PATH, index=False)
-    
-    return df
+vocab_size = 10000
+max_length = 100
+dim = 32
 
 
-def load_training_data():
-    if not os.path.exists(DATASET_PATH):
-        print(f"Dataset not found. Download from: {RESOURCES['datasets']['sqli_kaggle']}")
-        return create_sample_training_data()
-    
-    df = pd.read_csv(DATASET_PATH)
-    
-    if 'Query' not in df.columns and 'query' in df.columns:
-        df = df.rename(columns={'query': 'Query'})
-    if 'Label' not in df.columns and 'label' in df.columns:
-        df = df.rename(columns={'label': 'Label'})
-    
-    return df
+def train():
+    # Determine dataset path
+    if os.path.exists(SHARED_DATASET_PATH):
+        dataset_path = SHARED_DATASET_PATH
+    elif os.path.exists(LOCAL_DATASET_PATH):
+        dataset_path = LOCAL_DATASET_PATH
+    else:
+        # Fallback to sqli_dataset if labeled_dataset not found
+        dataset_path = os.path.join(BASE_DIR, '..', 'shared', 'datasets', 'sqli_dataset.csv')
+        print(f"labeled_dataset.csv not found, checking {dataset_path}")
+        if not os.path.exists(dataset_path):
+             print("Error: No dataset found.")
+             return
 
+    print(f"Loading dataset from: {dataset_path}")
+    df = pd.read_csv(dataset_path)
 
-def train_sqli_classifier(training_data):
-    queries = training_data['Query'].fillna('').values
-    labels = training_data['Label'].values
-    
-    print(f"Training samples: {len(queries)}")
-    print(f"Attack ratio: {labels.mean():.1%}")
-    
-    text_vectorizer = TfidfVectorizer(
-        analyzer='char',
-        ngram_range=(2, 5),
-        max_features=5000,
-        lowercase=True
-    )
-    query_vectors = text_vectorizer.fit_transform(queries)
-    
-    X_train, X_test, y_train, y_test = train_test_split(
-        query_vectors, labels, test_size=0.2, random_state=42, stratify=labels
-    )
-    
-    classifier = RandomForestClassifier(
-        n_estimators=100,
-        max_depth=20,
-        random_state=42,
-        n_jobs=-1
-    )
-    classifier.fit(X_train, y_train)
-    
-    predictions = classifier.predict(X_test)
-    accuracy = accuracy_score(y_test, predictions)
-    
-    print(f"\nAccuracy: {accuracy:.1%}")
-    print("\nClassification Report:")
-    print(classification_report(y_test, predictions, target_names=['Normal', 'Attack']))
-    
-    return classifier, text_vectorizer
+    if 'Query' in df.columns: df.rename(columns={'Query': 'query'}, inplace=True)
+    if 'Label' in df.columns: df.rename(columns={'Label': 'label'}, inplace=True)
 
+    X = df['query'].astype(str)
+    y = df['label'].values
 
-def save_trained_model(classifier, vectorizer):
-    os.makedirs(MODELS_DIR, exist_ok=True)
-    
-    model_bundle = {'model': classifier, 'vectorizer': vectorizer}
-    
-    with open(MODEL_PATH, 'wb') as f:
-        pickle.dump(model_bundle, f)
-    
-    print(f"Model saved: {MODEL_PATH}")
+    # Tokenizer - Character level=False to capture words like 'SELECT' or 'UNION'
+    tokenizer = Tokenizer(num_words=vocab_size, char_level=False, lower=True)
+    tokenizer.fit_on_texts(X)
 
+    # Save tokenizer
+    tokenizer_path = os.path.join(MODELS_DIR, 'tokenizer.pickle')
+    with open(tokenizer_path, 'wb') as handle:
+        pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    print(f"Tokenizer saved to {tokenizer_path}")
 
-def main():
-    print("="*60)
-    print("SQL INJECTION DETECTOR - MODEL TRAINING")
-    print("="*60 + "\n")
+    # Convert text to sequences
+    sequences = tokenizer.texts_to_sequences(X)
+    X_padded = pad_sequences(sequences, maxlen=max_length)
+
+    X_train, X_test, y_train, y_test = train_test_split(X_padded, y, test_size=0.2, random_state=42)
+
+    # Calculate weights to prioritize Recall
+    weights = class_weight.compute_class_weight('balanced', classes=np.unique(y_train), y=y_train)
+    class_weights = {0: weights[0], 1: weights[1] * 1.5}  # Boost attack weight slightly
+
+    # CNN model
+    model = Sequential([
+        Embedding(vocab_size, dim, input_length=max_length),
+
+        Conv1D(filters=64, kernel_size=3, activation='relu'),
+        GlobalMaxPooling1D(),
+
+        Dense(32, activation='relu'),
+        Dropout(0.5),  # Prevent overfitting
+        Dense(1, activation='sigmoid')
+    ])
+
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+    model.fit(X_train, y_train, epochs=5, batch_size=32, validation_data=(X_test, y_test), class_weight=class_weights)
+
+    # evaluation
+    y_pred_prob = model.predict(X_test)
+
+    #lower threshold for catching attacks
+    y_pred = (y_pred_prob > 0.2).astype(int)
+
+    recall = recall_score(y_test, y_pred)
+    cm = confusion_matrix(y_test, y_pred)
+
+    print("Confusion Matrix:\n", cm)
+    print(f"Recall:  {recall:.4f}.")
     
-    training_data = load_training_data()
-    classifier, vectorizer = train_sqli_classifier(training_data)
-    save_trained_model(classifier, vectorizer)
-    
-    print("\nTraining complete. Run detector_api.py to start the API.")
+    model_save_path = os.path.join(MODELS_DIR, 'sqli_cnn.h5') 
+    model.save(model_save_path)
+    print(f"Model saved to {model_save_path}")
 
 
 if __name__ == "__main__":
-    main()
+    train()

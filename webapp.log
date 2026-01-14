@@ -1,0 +1,23 @@
+[PIPELINE] Initialized with Case 3
+[PIPELINE] Detector service expected at: http://localhost:5000
+[PIPELINE] Firewall service expected at: http://localhost:5001
+============================================================
+E-SHOP - CASE 3: FULL PIPELINE (Firewall + Beatrice)
+============================================================
+
+Firewall must be running at http://localhost:5001
+ML Detector must be running at http://localhost:5003
+
+Use only for educational testing.
+
+
+Starting on http://localhost:5002
+============================================================
+
+ * Serving Flask app 'webapp'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.0.164:5002
+Press CTRL+C to quit
