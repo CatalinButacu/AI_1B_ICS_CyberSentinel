@@ -193,7 +193,7 @@ Bălăiță, R. (2026). DeepSQLi-RL: Hybrid Reinforcement Learning Extension for
 Automated SQL Injection Attacks. Technical University "Gheorghe Asachi" of Iași.
 ```
 
-**Paper:** [Report.pdf](https://github.com/RaduBalaita/ICS/blob/main/Report.pdf)
+**Paper:** [Report.pdf](https://github.com/CatalinButacu/AI_1B_ICS_CyberSentinel/blob/main/src/offensive/Report.pdf)
 
 ---
 
