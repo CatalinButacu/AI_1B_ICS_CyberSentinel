@@ -101,24 +101,23 @@ class SmartFirewall(BaseFirewall):
     def extract_and_learn_patterns(self):
         print(f"Extracting patterns from {len(self.collected_payloads)} payloads...")
         extractor = AttackPatternExtractor(min_occurrence_ratio=0.1)
-        new_patterns = extractor.extract_attack_patterns(self.collected_payloads)
         
-        existing_pattern_strings = set()
-        for item in self.learned_patterns:
-            pattern_str = item.get('pattern') if isinstance(item, dict) else item
-            existing_pattern_strings.add(pattern_str)
+        # Use extract_and_consolidate to extract new patterns AND rewrite rules file
+        new_patterns = extractor.extract_and_consolidate(self.collected_payloads)
         
+        # Update internal learned_patterns list from consolidated patterns
         for pattern_obj in new_patterns:
             pattern_str = pattern_obj.get('pattern') if isinstance(pattern_obj, dict) else pattern_obj
             
-            if pattern_str and pattern_str not in existing_pattern_strings:
+            existing_strings = set(
+                item.get('pattern') if isinstance(item, dict) else item 
+                for item in self.learned_patterns
+            )
+            
+            if pattern_str and pattern_str not in existing_strings:
                 self.learned_patterns.append(pattern_obj)
-                existing_pattern_strings.add(pattern_str)
-                
-                snort_rule = create_snort_rule_from_pattern(pattern_str)
-                if append_rule_to_file(snort_rule):
-                    self.stats['rules_generated'] += 1
-                    print(f"[NEW RULE] {pattern_str}")
+                self.stats['rules_generated'] += 1
+                print(f"[NEW RULE] {pattern_str}")
         
         self.save_stored_data()
     

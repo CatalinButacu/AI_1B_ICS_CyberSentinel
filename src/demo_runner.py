@@ -27,7 +27,7 @@ BOLD = '\033[1m'
 
 # URLs
 WEBAPP_URL = "http://localhost:5002/login"
-DETECTOR_URL = "http://localhost:5003"
+DETECTOR_URL = "http://localhost:5000"
 FIREWALL_URL = "http://localhost:5001"
 RESET_URL = "http://localhost:5001/clear"
 
