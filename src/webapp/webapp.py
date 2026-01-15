@@ -274,39 +274,69 @@ def health():
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Vulnerable E-Shop Web Application')
-    parser.add_argument('--case', type=int, choices=[1, 2, 3], default=1,
-                        help='Defense case: 1=No defense, 2=ML detection, 3=Full pipeline')
-    args = parser.parse_args()
+    """Start the vulnerable web application.
     
-    # Initialize defense pipeline and store in app.config
-    app.config['pipeline'] = DefensePipeline(case=args.case)
+    The webapp now auto-detects if Defense services are available:
+    - If Firewall (5001) + Detector (5000) are up → Full Pipeline (Case 3)
+    - If only Detector (5000) is up → ML Detection (Case 2)
+    - If nothing is up → No Defense (Case 1)
+    
+    Control scenarios from Defense machine by starting/stopping services.
+    """
+    import requests
+    
+    # Auto-detect which defense services are available
+    detector_available = False
+    firewall_available = False
+    
+    try:
+        r = requests.get('http://10.0.0.10:5000/health', timeout=1)
+        detector_available = r.status_code == 200
+    except:
+        pass
+    
+    try:
+        r = requests.get('http://10.0.0.10:5001/status', timeout=1)
+        firewall_available = r.status_code == 200
+    except:
+        pass
+    
+    # Determine case based on available services
+    if firewall_available and detector_available:
+        case = 3
+    elif detector_available:
+        case = 2
+    else:
+        case = 1
+    
+    # Initialize defense pipeline
+    app.config['pipeline'] = DefensePipeline(case=case)
     
     print("="*60)
     case_names = {
         1: "NO DEFENSE (Fully Vulnerable)",
-        2: "INLINE ML DETECTION (Beatrice)",
-        3: "FULL PIPELINE (Firewall + Beatrice)"
+        2: "INLINE ML DETECTION",
+        3: "FULL PIPELINE (Firewall + ML)"
     }
-    print(f"E-SHOP - CASE {args.case}: {case_names[args.case]}")
+    print(f"E-SHOP - CASE {case}: {case_names[case]}")
     print("="*60)
     
-    if args.case == 1:
-        print("\nWARNING: This is intentionally vulnerable!")
-    elif args.case == 2:
-        print("\nML Detector service must be running at http://localhost:5003")
-    elif args.case == 3:
-        print("\nFirewall must be running at http://localhost:5001")
-        print("ML Detector must be running at http://localhost:5003")
+    if case == 1:
+        print("\nNo defense services detected - running vulnerable!")
+    elif case == 2:
+        print(f"\nDetector found at http://10.0.0.10:5000")
+    elif case == 3:
+        print(f"\nFirewall found at http://10.0.0.10:5001")
+        print(f"Detector found at http://10.0.0.10:5000")
     
     print("\nUse only for educational testing.\n")
     
     initialize_database()
     
-    print(f"\nStarting on http://localhost:5002")
+    print(f"\nStarting on http://0.0.0.0:5002")
     print("="*60 + "\n")
     
-    app.run(host='0.0.0.0', port=5002, debug=False)  # Debug off for cleaner logs
+    app.run(host='0.0.0.0', port=5002, debug=False)
 
 
 if __name__ == "__main__":
