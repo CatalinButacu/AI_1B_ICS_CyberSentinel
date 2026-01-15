@@ -283,7 +283,7 @@ def main():
     
     case_descriptions = {
         0: "PASSTHROUGH (No Defense)",
-        1: "ML ONLY (Every Query to ML)",
+        1: "ML ONLY (Every Query goes through ML)",
         2: "FULL PIPELINE (Pattern + ML + Learning)"
     }
     

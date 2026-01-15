@@ -26,6 +26,7 @@ from flask import Flask, request, jsonify, render_template, redirect, url_for
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from shared.pipeline import DefensePipeline
+from shared.config import DETECTOR_URL, FIREWALL_URL, WEBAPP_URL, ENVIRONMENT
 
 app = Flask(__name__)
 
@@ -290,13 +291,13 @@ def main():
     firewall_available = False
     
     try:
-        r = requests.get('http://10.0.0.10:5000/health', timeout=1)
+        r = requests.get(f'{DETECTOR_URL}/health', timeout=1)
         detector_available = r.status_code == 200
     except:
         pass
     
     try:
-        r = requests.get('http://10.0.0.10:5001/status', timeout=1)
+        r = requests.get(f'{FIREWALL_URL}/status', timeout=1)
         firewall_available = r.status_code == 200
     except:
         pass
@@ -324,10 +325,10 @@ def main():
     if case == 1:
         print("\nNo defense services detected - running vulnerable!")
     elif case == 2:
-        print(f"\nDetector found at http://10.0.0.10:5000")
+        print(f"\nDetector found at {DETECTOR_URL}")
     elif case == 3:
-        print(f"\nFirewall found at http://10.0.0.10:5001")
-        print(f"Detector found at http://10.0.0.10:5000")
+        print(f"\nFirewall found at {FIREWALL_URL}")
+        print(f"Detector found at {DETECTOR_URL}")
     
     print("\nUse only for educational testing.\n")
     

@@ -5,7 +5,7 @@ from datetime import datetime
 from flask import Flask, request, jsonify
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'shared'))
-from config import FIREWALL_URL, API_TIMEOUT
+from config import FIREWALL_URL, API_TIMEOUT, ENVIRONMENT
 
 app = Flask(__name__)
 
@@ -30,7 +30,7 @@ def log_request(action, payload, confidence=None, extra=""):
     
     if confidence is not None:
         conf_bar = "█" * int(confidence * 10) + "░" * (10 - int(confidence * 10))
-        print(f"[{timestamp}] {action:12} | Conf: {confidence:.2%} [{conf_bar}] | {payload_preview}... {extra}")
+        print(f"[{timestamp}] {action:12} | Conf: {confidence:7.2%} [{conf_bar}] | {payload_preview}... {extra}")
     else:
         print(f"[{timestamp}] {action:12} | {payload_preview}... {extra}")
 
@@ -38,20 +38,19 @@ def log_request(action, payload, confidence=None, extra=""):
 def load_cnn_model():
     global model, tokenizer, model_type, tf_module
     
-    print("[INFO] Trying to load CNN model...")
+    print("[CNN] Attempting to load Beatrice's CNN model...")
     
     if not os.path.exists(CNN_MODEL_PATH):
-        print(f"[ERROR] CNN model not found: {CNN_MODEL_PATH}")
+        print(f"[CNN] Model file not found: {CNN_MODEL_PATH}")
         return False
     
     if not os.path.exists(TOKENIZER_PATH):
-        print(f"[ERROR] Tokenizer not found: {TOKENIZER_PATH}")
+        print(f"[CNN] Tokenizer not found: {TOKENIZER_PATH}")
         return False
     
     try:
-        os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+        os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
         os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
-        os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
         
         import tensorflow as tf
         tf_module = tf
@@ -62,21 +61,21 @@ def load_cnn_model():
             tokenizer = pickle.load(file)
         
         model_type = "CNN"
-        print(f"[LOADED] CNN model: {CNN_MODEL_PATH}")
+        print(f"[CNN] ✅ Successfully loaded: {CNN_MODEL_PATH}")
         return True
         
     except Exception as error:
-        print(f"[ERROR] CNN failed: {error}")
+        print(f"[CNN] ❌ Failed to load: {error}")
         return False
 
 
 def load_sklearn_model():
     global model, vectorizer, model_type
     
-    print("[INFO] Loading sklearn model...")
+    print("[SKLEARN] Loading RandomForest fallback...")
     
     if not os.path.exists(PKL_MODEL_PATH):
-        print(f"[ERROR] sklearn model not found: {PKL_MODEL_PATH}")
+        print(f"[SKLEARN] Model not found: {PKL_MODEL_PATH}")
         return False
     
     try:
@@ -87,11 +86,11 @@ def load_sklearn_model():
         vectorizer = data.get('vectorizer')
         model_type = "RandomForest"
         
-        print(f"[LOADED] sklearn model: {type(model).__name__}")
+        print(f"[SKLEARN] ✅ Loaded: {type(model).__name__}")
         return True
         
     except Exception as error:
-        print(f"[ERROR] sklearn failed: {error}")
+        print(f"[SKLEARN] ❌ Failed: {error}")
         return False
 
 
@@ -134,9 +133,9 @@ def check_payload():
     is_attack, confidence = predict_attack(payload)
     
     if is_attack:
-        log_request("ATTACK", payload, confidence, "⛔ BLOCKED")
+        log_request("⛔ ATTACK", payload, confidence, "BLOCKED")
     else:
-        log_request("SAFE", payload, confidence, "✓ ALLOWED")
+        log_request("✓ SAFE", payload, confidence, "ALLOWED")
     
     return jsonify({
         "is_attack": bool(is_attack),
@@ -151,25 +150,36 @@ def health():
     return jsonify({
         "status": "healthy",
         "model_loaded": model is not None,
-        "model_type": model_type
+        "model_type": model_type,
+        "environment": ENVIRONMENT
     })
 
 
 def main():
     print("=" * 60)
     print("  SQL INJECTION DETECTOR")
+    print("  Beatrice's CNN Model (with RandomForest fallback)")
     print("=" * 60)
+    print(f"[ENV] {ENVIRONMENT}")
+    print("")
     
-    loaded = load_sklearn_model()
+    # Try CNN first (works on Windows with AVX)
+    cnn_loaded = load_cnn_model()
     
-    if not loaded:
-        print("[FATAL] No model could be loaded.")
-        sys.exit(1)
+    if not cnn_loaded:
+        print("")
+        print("[FALLBACK] CNN failed, trying RandomForest...")
+        sklearn_loaded = load_sklearn_model()
+        
+        if not sklearn_loaded:
+            print("[FATAL] No model could be loaded. Exiting.")
+            sys.exit(1)
     
     print("")
-    print(f"[ACTIVE] Model: {model_type}")
-    print(f"[ACTIVE] Threshold: {DETECTION_THRESHOLD}")
-    print(f"[ACTIVE] Port: 5000")
+    print("=" * 60)
+    print(f"  ACTIVE MODEL: {model_type}")
+    print(f"  THRESHOLD: {DETECTION_THRESHOLD}")
+    print(f"  PORT: 5000")
     print("=" * 60)
     print("Waiting for requests...")
     print("")

@@ -1,4 +1,4 @@
-# AI-Generated Snort Rules
+# AI-Generated Snort Rules (for demo use: sudo snort -c /etc/snort/snort.conf -R /media/sf_src/firewall/rules/ai_learned.rules -A console)
 # Last cleared: 2026-01-11T14:34:07.097184
 
 alert tcp any any -> any any (msg:"AI-Learned: ' UNION SELECT 1, u"; flow:to_server,established; content:"' UNION SELECT 1, u"; nocase; classtype:web-application-attack; sid:9091781; rev:1; metadata:created 20260115;)
@@ -6,3 +6,8 @@ alert tcp any any -> any any (msg:"AI-Learned:  UNION SELECT 1, us"; flow:to_ser
 alert tcp any any -> any any (msg:"AI-Learned: UNION SELECT 1, use"; flow:to_server,established; content:"UNION SELECT 1, use"; nocase; classtype:web-application-attack; sid:9030851; rev:1; metadata:created 20260115;)
 alert tcp any any -> any any (msg:"AI-Learned: NION SELECT 1, user"; flow:to_server,established; content:"NION SELECT 1, user"; nocase; classtype:web-application-attack; sid:9011844; rev:1; metadata:created 20260115;)
 alert tcp any any -> any any (msg:"AI-Learned: ION SELECT 1, usern"; flow:to_server,established; content:"ION SELECT 1, usern"; nocase; classtype:web-application-attack; sid:9085067; rev:1; metadata:created 20260115;)
+alert tcp any any -> any any (msg:"AI-Learned: password || ' | ' |"; flow:to_server,established; content:"password |7C||7C| ' |7C| ' |7C|"; nocase; classtype:web-application-attack; sid:9083700; rev:1; metadata:created 20260115;)
+alert tcp any any -> any any (msg:"AI-Learned: assword || ' | ' ||"; flow:to_server,established; content:"assword |7C||7C| ' |7C| ' |7C||7C|"; nocase; classtype:web-application-attack; sid:9065221; rev:1; metadata:created 20260115;)
+alert tcp any any -> any any (msg:"AI-Learned: ssword || ' | ' || "; flow:to_server,established; content:"ssword |7C||7C| ' |7C| ' |7C||7C| "; nocase; classtype:web-application-attack; sid:9065939; rev:1; metadata:created 20260115;)
+alert tcp any any -> any any (msg:"AI-Learned: sword || ' | ' || p"; flow:to_server,established; content:"sword |7C||7C| ' |7C| ' |7C||7C| p"; nocase; classtype:web-application-attack; sid:9052281; rev:1; metadata:created 20260115;)
+alert tcp any any -> any any (msg:"AI-Learned: word || ' | ' || ph"; flow:to_server,established; content:"word |7C||7C| ' |7C| ' |7C||7C| ph"; nocase; classtype:web-application-attack; sid:9085854; rev:1; metadata:created 20260115;)
