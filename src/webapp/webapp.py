@@ -12,8 +12,8 @@ This simulates a real e-commerce database with:
 
 Supports 3 defense cases:
 - Case 1: No defense (fully vulnerable)
-- Case 2: Inline ML detection (Beatrice)
-- Case 3: Full pipeline (Firewall + Beatrice)
+- Case 2: Inline ML detection (ML)
+- Case 3: Full pipeline (Firewall + ML)
 """
 
 import os

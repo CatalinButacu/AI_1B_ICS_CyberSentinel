@@ -38,7 +38,7 @@ def log_request(action, payload, confidence=None, extra=""):
 def load_cnn_model():
     global model, tokenizer, model_type, tf_module
     
-    print("[CNN] Attempting to load Beatrice's CNN model...")
+    print("[CNN] Attempting to load CNN model...")
     
     if not os.path.exists(CNN_MODEL_PATH):
         print(f"[CNN] Model file not found: {CNN_MODEL_PATH}")
@@ -55,7 +55,12 @@ def load_cnn_model():
         import tensorflow as tf
         tf_module = tf
         
-        model = tf.keras.models.load_model(CNN_MODEL_PATH)
+        # Try loading with compile=False to ignore optimizer config issues
+        try:
+            model = tf.keras.models.load_model(CNN_MODEL_PATH, compile=False)
+        except:
+            # Fallback: try with safe_mode=False for older model formats
+            model = tf.keras.models.load_model(CNN_MODEL_PATH, compile=False, safe_mode=False)
         
         with open(TOKENIZER_PATH, 'rb') as file:
             tokenizer = pickle.load(file)
@@ -158,7 +163,7 @@ def health():
 def main():
     print("=" * 60)
     print("  SQL INJECTION DETECTOR")
-    print("  Beatrice's CNN Model (with RandomForest fallback)")
+    print("  CNN Model (with fallback on RandomForest)")
     print("=" * 60)
     print(f"[ENV] {ENVIRONMENT}")
     print("")

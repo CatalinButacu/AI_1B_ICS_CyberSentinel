@@ -156,7 +156,7 @@ def generate_labeled_dataset(output_file="data/labeled_dataset.csv",
     print(f"Total samples: {len(all_samples)}")
     print(f"Attack samples: {num_attacks} ({(num_attacks/len(all_samples))*100:.1f}%)")
     print(f"Benign samples: {num_benign} ({(num_benign/len(all_samples))*100:.1f}%)")
-    print(f"\nDataset is ready for Beatrice's ML detector training!")
+    print(f"\nDataset is ready for ML detector training!")
 
 if __name__ == "__main__":
     # Generate balanced dataset (50k attacks + 50k benign = 100k total)

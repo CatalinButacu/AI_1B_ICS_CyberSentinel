@@ -4,8 +4,8 @@ Author: Team
 
 This module provides the central business logic for the 3 defense cases:
 - Case 1: No defense (baseline vulnerable)
-- Case 2: Inline ML Detection (Beatrice)
-- Case 3: Full Pipeline (Firewall + Beatrice with feedback loop)
+- Case 2: Inline ML Detection (each querry goes through ML)
+- Case 3: Full Pipeline (Firewall with feedback loop)
 
 The pipeline is used by webapp.py to check requests BEFORE executing SQL.
 """
