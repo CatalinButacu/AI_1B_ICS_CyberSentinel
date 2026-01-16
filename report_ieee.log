@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2026.1.7)  15 JAN 2026 20:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2026.1.7)  16 JAN 2026 10:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -275,58 +275,27 @@ Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@dima=\skip55
 \bigstrutjot=\dimen175
 )
-(C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\alg
-orithm.sty
-Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
-nment
-
-(C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/float\float.st
-y
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count281
-\float@exts=\toks24
-\float@box=\box55
-\@float@everytoks=\toks25
-\@floatcapt=\box56
-)
-(C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.st
-y
-Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
-)
-\@float@every@algorithm=\toks26
-\c@algorithm=\count282
-)
-(C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\alg
-orithmic.sty
-Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count283
-\c@ALC@line=\count284
-\c@ALC@rem=\count285
-\c@ALC@depth=\count286
-\ALC@tlm=\skip56
-\algorithmicindent=\skip57
-)
 (C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/listings\listi
 ngs.sty
-\lst@mode=\count287
-\lst@gtempboxa=\box57
-\lst@token=\toks27
-\lst@length=\count288
+\lst@mode=\count281
+\lst@gtempboxa=\box55
+\lst@token=\toks24
+\lst@length=\count282
 \lst@currlwidth=\dimen176
-\lst@column=\count289
-\lst@pos=\count290
+\lst@column=\count283
+\lst@pos=\count284
 \lst@lostspace=\dimen177
 \lst@width=\dimen178
-\lst@newlines=\count291
-\lst@lineno=\count292
+\lst@newlines=\count285
+\lst@lineno=\count286
 \lst@maxwidth=\dimen179
 
 (C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmi
 sc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-\c@lstnumber=\count293
-\lst@skipnumbers=\count294
-\lst@framebox=\box58
+\c@lstnumber=\count287
+\lst@skipnumbers=\count288
+\lst@framebox=\box56
 )
 (C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/listings\listi
 ngs.cfg
@@ -334,45 +303,66 @@ File: listings.cfg 2023/02/27 1.9 listings configuration
 ))
 Package: listings 2023/02/27 1.9 (Carsten Heinz)
 
+(C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\bookt
+abs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen180
+\lightrulewidth=\dimen181
+\cmidrulewidth=\dimen182
+\belowrulesep=\dimen183
+\belowbottomsep=\dimen184
+\aboverulesep=\dimen185
+\abovetopsep=\dimen186
+\cmidrulesep=\dimen187
+\cmidrulekern=\dimen188
+\defaultaddspace=\dimen189
+\@cmidla=\count289
+\@cmidlb=\count290
+\@aboverulesep=\dimen190
+\@belowrulesep=\dimen191
+\@thisruleclass=\count291
+\@lastruleclass=\count292
+\@thisrulewidth=\dimen192
+)
 (C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3ba
 ckend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count295
-\l__pdf_internal_box=\box59
+\l__color_backend_stack_int=\count293
+\l__pdf_internal_box=\box57
 ) (report_ieee.aux)
 \openout1 = `report_ieee.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 
 -- Lines per column: 56 (exact).
 
 (C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\su
 pp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count296
-\scratchdimen=\dimen180
-\scratchbox=\box60
-\nofMPsegments=\count297
-\nofMParguments=\count298
-\everyMPshowfont=\toks28
-\MPscratchCnt=\count299
-\MPscratchDim=\dimen181
-\MPnumerator=\count300
-\makeMPintoPDFobject=\count301
-\everyMPtoPDFconversion=\toks29
+\scratchcounter=\count294
+\scratchdimen=\dimen193
+\scratchbox=\box58
+\nofMPsegments=\count295
+\nofMParguments=\count296
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count297
+\MPscratchDim=\dimen194
+\MPnumerator=\count298
+\makeMPintoPDFobject=\count299
+\everyMPtoPDFconversion=\toks26
 )
 (C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\e
 pstopdf-base.sty
@@ -384,110 +374,76 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 pdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-\c@lstlisting=\count302
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 32.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
+\c@lstlisting=\count300
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
 
 
 (C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.
 fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 32.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
 
 
 (C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.
 fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 3
-2.
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 2
+5.
 
 (C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsptm.
 fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 32.
- [1{C:/Users/catalin.butacu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C
-:/Users/catalin.butacu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.en
-c}
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
 
+Underfull \hbox (badness 1365) in paragraph at lines 46--47
+[]\OT1/ptm/m/n/10 We uti-lized \OT1/ptm/b/n/10 Character-level To-k-eniza-tion 
+\OT1/ptm/m/n/10 to pre-serve
+ []
 
-]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-10.
-
-(C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.
-fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-35.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
+3.
 
 (C:\Users\catalin.butacu\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.
 fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 137--137
-[]\OT1/pcr/m/n/8 SE%20LECT * FROM
+) [1{C:/Users/catalin.butacu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{
+C:/Users/catalin.butacu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.e
+nc}
+
+
+]
+Underfull \hbox (badness 8000) in paragraph at lines 90--91
+[]\OT1/ptm/b/n/10 Regularization/Pooling\OT1/ptm/m/n/10 : Global Max Pool-ing a
+nd
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--139
-[]\OT1/ptm/m/n/8 UPDATE calc SET
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 139--139
-\OT1/ptm/m/n/8 re-sult=100 WHERE
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 140--140
-[]\OT1/ptm/m/n/8 SELECT WHERE desc
+Underfull \hbox (badness 1888) in paragraph at lines 124--125
+\OT1/ptm/m/n/10 com-plex string \OT1/pcr/m/n/10 supercalifragilistic...\OT1/ptm
+/m/n/10 , the RF
  []
 
 [2]
-Package textcomp Info: Symbol \textrightarrow not provided by
-(textcomp)             font family ptm in TS1 encoding.
-(textcomp)             Default family used instead on input line 244.
-Package textcomp Info: Symbol \textrightarrow not provided by
-(textcomp)             font family ptm in TS1 encoding.
-(textcomp)             Default family used instead on input line 245.
-Package textcomp Info: Symbol \textrightarrow not provided by
-(textcomp)             font family ptm in TS1 encoding.
-(textcomp)             Default family used instead on input line 318.
-Package textcomp Info: Symbol \textrightarrow not provided by
-(textcomp)             font family ptm in TS1 encoding.
-(textcomp)             Default family used instead on input line 319.
-Package textcomp Info: Symbol \textrightarrow not provided by
-(textcomp)             font family ptm in TS1 encoding.
-(textcomp)             Default family used instead on input line 333.
-Package textcomp Info: Symbol \textrightarrow not provided by
-(textcomp)             font family ptm in TS1 encoding.
-(textcomp)             Default family used instead on input line 334.
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
+[]\OT1/pcr/m/n/10 UPDATE users SET last_login=NOW()\OT1/ptm/m/n/10 :
+ []
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--335
-[]\OT1/ptm/m/n/10 ML: At-tack de-tected (con-fi-dence: 88%) \TS1/cmr/m/n/10 ^^Y
 
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
+\OT1/ptm/m/n/10 Flagged for con-tain-ing mutation-prone key-words
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
+[]\OT1/pcr/m/n/10 search query: [random_string]\OT1/ptm/m/n/10 : Be-nign
  []
 
 [3]
-Package textcomp Info: Symbol \textrightarrow not provided by
-(textcomp)             font family ptm in TS1 encoding.
-(textcomp)             Default family used instead on input line 335.
-Package textcomp Info: Symbol \textrightarrow not provided by
-(textcomp)             font family ptm in TS1 encoding.
-(textcomp)             Default family used instead on input line 339.
-Package textcomp Info: Symbol \textrightarrow not provided by
-(textcomp)             font family ptm in TS1 encoding.
-(textcomp)             Default family used instead on input line 354.
-
-Underfull \hbox (badness 10000) in paragraph at lines 354--355
-[]\OT1/ptm/b/n/10 Graceful Degra-da-tion\OT1/ptm/m/n/10 : Au-to-matic
- []
-
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -506,33 +462,34 @@ L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6165 strings out of 474486
- 94946 string characters out of 5739508
- 1993542 words of memory out of 5000000
- 28377 multiletter control sequences out of 15000+600000
- 606273 words of font info for 133 fonts, out of 8000000 for 9000
+ 5877 strings out of 474486
+ 90338 string characters out of 5739508
+ 1986542 words of memory out of 5000000
+ 28101 multiletter control sequences out of 15000+600000
+ 606518 words of font info for 135 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,14n,65p,1066b,1065s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\catalin.butacu\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
-i600\tcrm0800.pk> <C:\Users\catalin.butacu\AppData\Local\MiKTeX\fonts/pk/ljfour
-/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/catalin.butacu/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/catalin.butacu/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/c
-atalin.butacu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi
+ 57i,14n,65p,1135b,1620s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/catalin.butacu/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmmi10.pfb><C:/Users/catalin.butacu/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/catalin.butacu/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/catalin.butacu/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/
+catalin.butacu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
 8.pfb><C:/Users/catalin.butacu/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmr10.pfb><C:/Users/catalin.butacu/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/catalin.butacu/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/catalin.buta
-cu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/U
-sers/catalin.butacu/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8
-a.pfb><C:/Users/catalin.butacu/AppData/Local/Programs/MiKTeX/fonts/type1/urw/ti
-mes/utmb8a.pfb><C:/Users/catalin.butacu/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/urw/times/utmbi8a.pfb><C:/Users/catalin.butacu/AppData/Local/Programs/MiKTeX
-/fonts/type1/urw/times/utmr8a.pfb><C:/Users/catalin.butacu/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report_ieee.pdf (4 pages, 176599 bytes).
+/amsfonts/cm/cmsy10.pfb><C:/Users/catalin.butacu/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/catalin.butacu/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/catalin.but
+acu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/
+Users/catalin.butacu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmsy9.pfb><C:/Users/catalin.butacu/AppData/Local/Programs/MiKTeX/fonts/type1
+/urw/courier/ucrr8a.pfb><C:/Users/catalin.butacu/AppData/Local/Programs/MiKTeX/
+fonts/type1/urw/times/utmb8a.pfb><C:/Users/catalin.butacu/AppData/Local/Program
+s/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/catalin.butacu/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/catalin.butacu/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report_ieee.pdf (4 pages, 196082 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
+ 91 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
