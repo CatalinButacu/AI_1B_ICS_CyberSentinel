@@ -6,7 +6,7 @@
 ## Team Members and Contributions
 
 ### Radu-Ionuț Bălăiță
-**Role**: Offensive Module Developer
+**Role**: Offensive Module Developer ([README](file:///c:/Users/catalin.butacu/Downloads/ICS/src/offensive/README.md))
 
 **Contributions**:
 - Designed and implemented the BiLSTM Seq2Seq architecture for payload mutation
@@ -23,7 +23,7 @@
 ---
 
 ### Ștefana-Beatrice Gherghel
-**Role**: Detection Module Developer
+**Role**: Detection Module Developer ([README](file:///c:/Users/catalin.butacu/Downloads/ICS/src/defensive/README.md))
 
 **Contributions**:
 - Designed and trained the CNN classifier for SQLi detection
@@ -40,7 +40,7 @@
 ---
 
 ### Ionel-Cătălin Butacu
-**Role**: Firewall Module Developer & Team Leader
+**Role**: Firewall Module Developer & Team Leader ([README](file:///c:/Users/catalin.butacu/Downloads/ICS/src/firewall/README.md))
 
 **Contributions**:
 - Designed the adaptive firewall architecture with three defense modes
